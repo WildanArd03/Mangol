@@ -75,7 +75,7 @@ https://templatemo.com/tm-557-grad-school
             while ($r=mysqli_fetch_array($sql)) {
         ?>
           <div class="item">
-            <a href="komik/<?= $r['link'] ?>.php">
+            <a href="komik/<?= $r['link'] ?>.php?id=<?= $r['id']?>">
                 <img src="admin/thumbnail/<?= $r['image']?>" class="img" alt="">
             </a>
             <div class="content mt-3">

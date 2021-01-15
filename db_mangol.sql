@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2021 at 01:58 PM
+-- Generation Time: Jan 15, 2021 at 04:05 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -69,10 +69,19 @@ CREATE TABLE `tb_manga` (
   `sinopsis` text NOT NULL,
   `genre` varchar(255) NOT NULL,
   `author` varchar(225) NOT NULL,
-  `status` enum('on going','tamat') NOT NULL,
+  `status` enum('On Going','Tamat') NOT NULL,
   `rilis` varchar(225) NOT NULL,
-  `type` varchar(225) NOT NULL
+  `type` enum('Manga','Manhua','Manhwa') NOT NULL,
+  `link` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_manga`
+--
+
+INSERT INTO `tb_manga` (`id_manga`, `image`, `judul`, `sinopsis`, `genre`, `author`, `status`, `rilis`, `type`, `link`) VALUES
+(2, 'AP.jpg', 'Apotheosis', 'lorem', 'Action,romace', 'saha', 'Tamat', '1029', 'Manga', ''),
+(3, 'GB.jpg', 'Testto', 'lorem', 'lorem', 'lorem', 'On Going', 'lorem', 'Manhua', '');
 
 -- --------------------------------------------------------
 
@@ -95,7 +104,7 @@ INSERT INTO `tb_popular_komik` (`id`, `link`, `image`, `judul`) VALUES
 (12, 'apotheosis', 'AP.jpg', 'Apotheosis'),
 (14, 'the-beginning-after-the-end', 'TBT.jpg', 'The Beginning After The End'),
 (15, 'horimiya', 'HM.jpg', 'Horimiya'),
-(16, 'one-piece', 'OP.jpg', 'One Piece'),
+(16, 'one-piece/index', 'OP.jpg', 'One Piece'),
 (17, 'overgeared', 'OG.jpg', 'Overgeared');
 
 --
@@ -150,7 +159,7 @@ ALTER TABLE `tb_login`
 -- AUTO_INCREMENT for table `tb_manga`
 --
 ALTER TABLE `tb_manga`
-  MODIFY `id_manga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_manga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_popular_komik`

@@ -7,7 +7,6 @@ if (isset($_POST['buat'])) {
     $files = $_POST['file'];
     $folders = $_POST['folder'];
 
-    // change the name below for the folder you want
     $dir = '../komik/'.$folders;
 
     $file_to_write =  $files . '.php';
@@ -18,18 +17,16 @@ if (isset($_POST['buat'])) {
     }
     $file = fopen( $dir . '/' . $file_to_write,"w");
 
-    // fwrite($file, include'../index.php');
+    fwrite($file, "<?php include 'admin/detail-manga-default/index.php' ?>");
+    
+    fclose($file);
 
-    // // closes the file
-    // fclose($file);
                             
 }
 
 
 
 ?>
-
-
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -276,55 +273,55 @@ if (isset($_POST['buat'])) {
                                                 <div class="container-fluid p-0">
                                                     <div class="row">
                                                         <div class="col-lg-3 col-sm-3">
-                                                            <input type="checkbox" value="Action">
+                                                            <input type="checkbox" name="genre" value="Action">
                                                             <label  class="genre">Action</label>
                                                         </div>
                                                         <div class="col-lg-3 col-sm-3">
-                                                            <input type="checkbox" value="Drama">
+                                                            <input type="checkbox" name="genre" value="Drama">
                                                             <label  class="genre">Drama</label>
                                                         </div>
                                                         <div class="col-lg-3 col-sm-3">
-                                                            <input type="checkbox" value="Harem">
+                                                            <input type="checkbox" name="genre" value="Harem">
                                                             <label  class="genre">Harem</label>
                                                         </div>
                                                         <div class="col-lg-3 col-sm-3">
-                                                            <input type="checkbox" value="Romance">
+                                                            <input type="checkbox" name="genre" value="Romance">
                                                             <label  class="genre">Romance</label>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-3 col-sm-3">
-                                                            <input type="checkbox" value="Comedy">
+                                                            <input type="checkbox" name="genre" value="Comedy">
                                                             <label  class="genre">Comedy</label>
                                                         </div>
                                                         <div class="col-lg-3 col-sm-3">
-                                                            <input type="checkbox" value="Fantasy">
+                                                            <input type="checkbox" name="genre" value="Fantasy">
                                                             <label  class="genre">Fantasy</label>
                                                         </div>
                                                         <div class="col-lg-3 col-sm-3">
-                                                            <input type="checkbox" value="Isekai">
+                                                            <input type="checkbox" name="genre" value="Isekai">
                                                             <label  class="genre">Isekai</label>
                                                         </div>
                                                         <div class="col-lg-3 col-sm-3">
-                                                            <input type="checkbox" value="Adventure">
+                                                            <input type="checkbox" name="genre" value="Adventure">
                                                             <label  class="genre">Adventure</label>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-3 col-sm-3">
-                                                            <input type="checkbox" value="Magic">
+                                                            <input type="checkbox" name="genre" value="Magic">
                                                             <label  class="genre">Magic</label>
                                                         </div>
                                                         <div class="col-lg-3 col-sm-3">
-                                                            <input type="checkbox" value="Shoujo">
+                                                            <input type="checkbox" name="genre" value="Shoujo">
                                                             <label  class="genre">Shoujo</label>
                                                         </div>
                                                         <div class="col-lg-3 col-sm-3">
-                                                            <input type="checkbox" value="Music">
+                                                            <input type="checkbox" name="genre" value="Music">
                                                             <label  class="genre">Music</label>
                                                         </div>
                                                         <div class="col-lg-3 col-sm-3">
-                                                            <input type="checkbox" value="Sports">
+                                                            <input type="checkbox" name="genre" value="Sports">
                                                             <label  class="genre">Sports</label>
                                                         </div>
                                                     </div>
@@ -345,15 +342,15 @@ if (isset($_POST['buat'])) {
                                                 <div class="container-fluid p-0">
                                                     <div class="row">
                                                         <div class="col-4">
-                                                            <input type="checkbox" value="Manga">
+                                                            <input type="radio" name="type" value="Manga">
                                                             <label  class="genre">Manga</label>
                                                         </div>
                                                         <div class="col-4">
-                                                            <input type="checkbox" value="Manhua">
+                                                            <input type="radio" name="type" value="Manhua">
                                                             <label  class="genre">Manhua</label>
                                                         </div>
                                                         <div class="col-4">
-                                                            <input type="checkbox" value="Manhwa">
+                                                            <input type="radio" name="type" value="Manhwa">
                                                             <label  class="genre">Manhwa</label>
                                                         </div>
                                                     </div>
@@ -377,11 +374,11 @@ if (isset($_POST['buat'])) {
                                                 <div class="container-fluid p-0">
                                                     <div class="row">
                                                         <div class="col-4">
-                                                            <input type="checkbox" value="On Going">
+                                                            <input type="radio" name="status" value="On Going">
                                                             <label  class="genre">On Going</label>
                                                         </div>
                                                         <div class="col-3">
-                                                            <input type="checkbox" value="Tamat">
+                                                            <input type="radio" name="status" value="Tamat">
                                                             <label  class="genre">Tamat</label>
                                                         </div>
                                                         <div class="col-5">

@@ -1,0 +1,1 @@
+<?php include '../../admin/detail-manga-default/index.php' ?>
