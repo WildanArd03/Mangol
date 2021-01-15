@@ -1,0 +1,123 @@
+.thumb{
+    width: 125px !important;
+    height:165px !important;
+    padding: 12px;
+}
+.content{
+    display: inline-block;
+}
+.date{
+    float: right;
+    text-align: left;
+    font-size: 12px;
+    margin-top:2px;
+}
+.animatebar{
+    display: block;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: white;
+    background-color:rgba(22,34,57,0.1);
+    background-clip: padding-box;
+    border: 1px solid #ffc107;
+    border-radius: .25rem;
+    border-bottom-right-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    width: 95px;  
+    transition: width 0.3s;
+}
+::placeholder{
+    color: #ccc;
+}
+.animatebar:focus{
+    outline: none;
+    width: 170px; 
+    transition: width 0.2s;
+}
+.bordl{
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+/* Flexbox */
+.flexbox3 {
+    display: flex;
+    flex-wrap: wrap;
+}
+.flexbox3-item {
+    -webkit-box-flex: 0;
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+    position: relative;
+    width: 100%;
+    padding: 10px;
+}
+.flexbox3-content {
+    border-bottom: none !important;
+}
+.dark .flexbox3-thumb {
+    border: solid 2px #3b3c4c;
+}
+.flexbox3-thumb {
+    overflow: hidden;
+    float: left;
+    position: relative;
+    width: 95px;
+    height: 125px;
+    border-radius: 5px;
+    border: solid 2px #3b3c4c !important;
+}
+.flexbox3-side {
+    position: relative;
+    overflow: hidden;
+    padding-left: 10px;
+}
+.flexbox3-side .title {
+    font-weight: 700;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.flexbox3-side ul.chapter {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 5px;
+    font-size: 15px;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+.flexbox3-side ul.chapter li .date {
+    float: right;
+    text-align: left;
+    color: #999;
+    font-size: 14px;
+    padding: 3px;
+}
+.flexbox3-thumb img {
+    width: 100%;
+    height: auto;
+}
+img {
+    max-width: 100%;
+}
+a{
+    color: white !important;
+}
+a:hover{
+    color: #ffc107 !important;
+}
+.flexbox3-side ul.chapter li a {
+    margin-top: 3px;;
+    background: #3b3c4c !important;
+    color: #eee !important;
+    font-size: 13px;
+}
+.flexbox3-side ul.chapter li a:hover {
+    background: #3b3c4c !important;
+    color: #ffc107 !important;
+}
