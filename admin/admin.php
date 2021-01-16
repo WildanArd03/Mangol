@@ -95,6 +95,7 @@ session_start();
                             </a>
                             <ul class="submenu-angle" aria-expanded="true">
                                 <li><a title="Add New" href="manga-add.php"><span class="mini-sub-pro">Add Manga</span></a></li>
+                                <li><a title="Add Genre" href="genre.php"><span class="mini-sub-pro">Add Genre</span></a></li>
                                 <li><a title="Populer Komik" href="populer.php"><span class="mini-sub-pro">Popular Komik</span></a></li>
                                 <li><a title="Mangga List" href="manga-list.php"><span class="mini-sub-pro">Mangga List</span></a></li>
                             </ul>

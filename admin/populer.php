@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../config/konek.php';
-
+  @$mangaid = $_POST['id_manga'];	
   @$link = $_POST['link'];
   @$judul = $_POST['judul'];
   @$nama_file = $_FILES['gambar']['name'];
@@ -14,7 +14,7 @@ include '../config/konek.php';
 if (isset($_POST['upload'])) {
 
 
-  $sql = mysqli_query($con, "INSERT INTO tb_popular_komik VALUES('','$link','$nama_file','$judul')");
+  $sql = mysqli_query($con, "INSERT INTO tb_popular_komik VALUES('','$link','$nama_file','$judul','$mangaid')");
 
       if ($sql) {
           //echo "<script>alert('Data Berhasil tersimpan');document.location.href='populer.php';</script>";
@@ -142,6 +142,7 @@ if(isset($_POST['update'])){
                             </a>
                             <ul class="submenu-angle" aria-expanded="true">
                                 <li><a title="Add New" href="manga-add.php"><span class="mini-sub-pro">Add Manga</span></a></li>
+                                <li><a title="Add Genre" href="genre.php"><span class="mini-sub-pro">Add Genre</span></a></li>
                                 <li><a title="Populer Komik" href="populer.php"><span class="mini-sub-pro">Popular Komik</span></a></li>
                                 <li><a title="Mangga List" href="manga-list.php"><span class="mini-sub-pro">Mangga List</span></a></li>
                             </ul>
@@ -313,6 +314,22 @@ if(isset($_POST['update'])){
                           <form method="post" enctype="multipart/form-data">
                             <div class="card-body">
                               <div class="container-fluid p-0">
+											<div class="row">
+                                  <div class="col-lg-12">
+                                    <div class="input-group mg-b-pro-edt">
+                                      <span class="input-group-addon"><i class="icon nalika-down-arrow nalika-angle-dw"></i></span>
+													<select name="id_manga" class="form-control" >
+													<option disabled class="opt-m" selected >Select Manga</option>
+													<?php
+														$sql = mysqli_query($con, "SELECT * FROM tb_manga");
+														while ($r=mysqli_fetch_array($sql)) {
+													?>
+													<option value="<?= $r['id_manga']?>"><?= $r['judul']?></option>
+													<?php }?>
+                                      </select>
+                                    </div>
+                                  </div>
+										  </div>
                                 <div class="row">
                                   <div class="col-lg-12">
                                     <div class="input-group mg-b-pro-edt">

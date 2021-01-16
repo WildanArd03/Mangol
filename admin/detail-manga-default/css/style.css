@@ -960,7 +960,7 @@ ol {
 .anime__details__text p {
 	color: #b7b7b7;
 	font-size: 18px;
-	line-height: 30px;
+	line-height: 10px;
 }
 
 .anime__details__pic {
@@ -1032,28 +1032,15 @@ ol {
 	margin-bottom: 15px;
 }
 
-.anime__details__widget ul {
-	margin-bottom: 20px;
-}
-
 .anime__details__widget ul li {
 	list-style: none;
-	font-size: 15px;
+	font-size: 13px;
 	color: #ffffff;
-	line-height: 30px;
+	line-height: 20px;
 	position: relative;
-	padding-left: 18px;
 }
 
-.anime__details__widget ul li:before {
-	position: absolute;
-	left: 0;
-	top: 12px;
-	height: 6px;
-	width: 6px;
-	background: #b7b7b7;
-	content: "";
-}
+
 
 .anime__details__widget ul li span {
 	color: #b7b7b7;

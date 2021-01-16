@@ -42,7 +42,7 @@ https://templatemo.com/tm-557-grad-school
 
    
   <!--header-->
-  <header class="main-header" role="header">
+  <header class="main-header" role="header" style="background-color:#070720;position:absolute;">
     <div class="container p-0">
       <div class="logo p-0">
         <a href="#"><em>Mangol</em></a>
@@ -50,8 +50,8 @@ https://templatemo.com/tm-557-grad-school
       <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
       <nav id="menu" class="main-nav" role="navigation">
         <ul class="main-menu p-0">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Manga List</a></li>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="manga-list/">Manga List</a></li>
           <li>
           <form class="d-flex justify-content-center">
             <input class="animatebar" type="search" placeholder="Search" aria-label="Search">
@@ -65,7 +65,7 @@ https://templatemo.com/tm-557-grad-school
     </div>
   </header>
 
-  <section class="section courses pb-4 p-3 ">
+  <section class="section pb-4 p-3 ">
     <div class="container">
       <div class="row">
         <h2 class="mt-5 pt-5 text-light">KOMIK POPULER</h2>
@@ -75,8 +75,8 @@ https://templatemo.com/tm-557-grad-school
             while ($r=mysqli_fetch_array($sql)) {
         ?>
           <div class="item">
-            <a href="komik/<?= $r['link'] ?>.php?id=<?= $r['id']?>">
-                <img src="admin/thumbnail/<?= $r['image']?>" class="img" alt="">
+            <a href="komik/<?= $r['link'] ?>/index.php?id=<?= $r['id_manga']?>">
+                <img src="admin/image/<?= $r['image']?>" class="img" alt="">
             </a>
             <div class="content mt-3">
               <a href="#"><h5><?= $r['judul']?></h5></a>  
@@ -87,7 +87,7 @@ https://templatemo.com/tm-557-grad-school
       </div>
     </div>
   </section>
-  <section class="section courses m-0 p-0">
+  <section class="section mb-5 pb-2">
     <div class="container">
      <h3 class="text-light">CHAPTER TERBARU</h3>
      <hr color="#ffc107" class="m-0 mb-2">
@@ -200,7 +200,7 @@ https://templatemo.com/tm-557-grad-school
     </div>
   </section>
 
-  <footer class="m-0">
+  <footer class="m-0 fixed-bottom" style="background-color:#070720;">
     <div class="container">
       <div class="row">
         <div class="col-md-12">

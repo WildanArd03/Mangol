@@ -1,0 +1,9 @@
+.synopsiss p{
+    font-size: 15px;
+    font-weight: normal;
+    padding-left: 6px;
+    line-height: 20px !important;
+}
+.content-info-manga{
+    padding-left:0px !important;
+}
