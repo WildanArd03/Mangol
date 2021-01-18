@@ -1,6 +1,9 @@
 <?php
   session_start();
   include 'config/konek.php';
+  include 'admin/controller/timeago.php';
+
+ 
 
 ?>
 
@@ -65,24 +68,28 @@ https://templatemo.com/tm-557-grad-school
     </div>
   </header>
 
-  <section class="section pb-4 p-3 ">
+  <section class="section courses pb-4 p-3">
     <div class="container">
       <div class="row">
         <h2 class="mt-5 pt-5 text-light">KOMIK POPULER</h2>
         <div class="owl-carousel owl-theme mt-4">
         <?php
-            $sql = mysqli_query($con, "SELECT * FROM tb_popular_komik");
+            $no=0;
+            $sql = mysqli_query($con, "SELECT * FROM tb_popular_komik order by id_manga DESC");
             while ($r=mysqli_fetch_array($sql)) {
+            if ($no == 5) {
+              break;
+            }
         ?>
           <div class="item">
             <a href="komik/<?= $r['link'] ?>/index.php?id=<?= $r['id_manga']?>">
                 <img src="admin/image/<?= $r['image']?>" class="img" alt="">
             </a>
             <div class="content mt-3">
-              <a href="#"><h5><?= $r['judul']?></h5></a>  
+              <a href="#"><h5><?= $r['judul']; $no++?></h5></a>  
             </div>
           </div>
-          <?php } ?>
+          <?php  }?>
         </div>
       </div>
     </div>
@@ -93,108 +100,40 @@ https://templatemo.com/tm-557-grad-school
      <hr color="#ffc107" class="m-0 mb-2">
       <!-- Flex -->
       <div class="flexbox3">
+      <?php
+          $no=1;
+          $sql = mysqli_query($con, "SELECT * FROM tb_manga order by id_manga DESC");
+          while ($r=mysqli_fetch_array($sql)){
+          if ($no == 9 ) {
+            break;
+          }        
+
+        ?>
         <div class="flexbox3-item">
           <div class="flexbox3-content">
             <a href="index.php">
               <div class="flexbox3-thumb">
-                <img src="assets/images/OP.jpg" class="img-fluid" alt="">
+                <img src="admin/image/<?= $r['image'] ?>" class="img-fluid" alt="">
               </div>
             </a>
             <div class="flexbox3-side">
               <div class="title">
-                <a href="#">One Piece</a>
+                <a href="#"><?= $r['judul']; $no++?></a>
               </div>
               <ul class="chapter">
-                <li><a href="#">Chapter 01</a><span class="date">1 days ago</span></li>
+                <li>
+                  <a href="#">Chapter 01</a>
+                    <span class="date">
+                    <?php 
+                       echo time_elapsed_string($r['date-time']);
+                      ?>
+                    </span>
+                  </li>
               </ul>
             </div>
           </div>
         </div>
-        <div class="flexbox3-item">
-          <div class="flexbox3-content">
-            <a href="index.php">
-              <div class="flexbox3-thumb">
-                <img src="assets/images/AP.jpg" class="img-fluid" alt="">
-              </div>
-            </a>
-            <div class="flexbox3-side">
-              <div class="title">
-                <a href="#">Apotheosis</a>
-              </div>
-              <ul class="chapter">
-                <li><a href="#">Chapter 01</a><span class="date">1 days ago</span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="flexbox3-item">
-          <div class="flexbox3-content">
-            <a href="index.php">
-              <div class="flexbox3-thumb">
-                <img src="assets/images/TBT.jpg" class="img-fluid" alt="">
-              </div>
-            </a>
-            <div class="flexbox3-side">
-              <div class="title">
-                <a href="#">The Beginning After The End</a>
-              </div>
-              <ul class="chapter">
-                <li><a href="#">Chapter 01</a><span class="date">1 days ago</span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="flexbox3-item">
-          <div class="flexbox3-content">
-            <a href="index.php">
-              <div class="flexbox3-thumb">
-                <img src="assets/images/HM.jpg" class="img-fluid" alt="">
-              </div>
-            </a>
-            <div class="flexbox3-side">
-              <div class="title">
-                <a href="#">Horimiya</a>
-              </div>
-              <ul class="chapter">
-                <li><a href="#">Chapter 01</a><span class="date">1 days ago</span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="flexbox3-item">
-          <div class="flexbox3-content">
-            <a href="index.php">
-              <div class="flexbox3-thumb">
-                <img src="assets/images/HB.jpg" class="img-fluid" alt="">
-              </div>
-            </a>
-            <div class="flexbox3-side">
-              <div class="title">
-                <a href="#">Hitoribocchi No Isekai Kouryaku</a>
-              </div>
-              <ul class="chapter">
-                <li><a href="#">Chapter 01</a><span class="date">1 days ago</span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="flexbox3-item">
-          <div class="flexbox3-content">
-            <a href="index.php">
-              <div class="flexbox3-thumb">
-                <img src="assets/images/OG.jpg" class="img-fluid" alt="">
-              </div>
-            </a>
-            <div class="flexbox3-side">
-              <div class="title">
-                <a href="#">Overgeared</a>
-              </div>
-              <ul class="chapter">
-                <li><a href="#">Chapter 01</a><span class="date">1 days ago</span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <?php } ?>
       </div>
   <!-- End Flex -->
     </div>

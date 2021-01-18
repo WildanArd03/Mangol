@@ -314,22 +314,22 @@ if(isset($_POST['update'])){
                           <form method="post" enctype="multipart/form-data">
                             <div class="card-body">
                               <div class="container-fluid p-0">
-											<div class="row">
+											          <div class="row">
                                   <div class="col-lg-12">
                                     <div class="input-group mg-b-pro-edt">
                                       <span class="input-group-addon"><i class="icon nalika-down-arrow nalika-angle-dw"></i></span>
-													<select name="id_manga" class="form-control" >
-													<option disabled class="opt-m" selected >Select Manga</option>
-													<?php
-														$sql = mysqli_query($con, "SELECT * FROM tb_manga");
-														while ($r=mysqli_fetch_array($sql)) {
-													?>
-													<option value="<?= $r['id_manga']?>"><?= $r['judul']?></option>
-													<?php }?>
+                                      <select name="id_manga" class="form-control" >
+                                      <option disabled class="opt-m" selected >Select Manga</option>
+                                      <?php
+                                        $sql = mysqli_query($con, "SELECT * FROM tb_manga");
+                                        while ($r=mysqli_fetch_array($sql)) {
+                                      ?>
+                                      <option value="<?= $r['id_manga']?>"><?= $r['judul']?></option>
+                                      <?php }?>
                                       </select>
                                     </div>
                                   </div>
-										  </div>
+										            </div>
                                 <div class="row">
                                   <div class="col-lg-12">
                                     <div class="input-group mg-b-pro-edt">

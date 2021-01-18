@@ -964,7 +964,7 @@ ol {
 }
 
 .anime__details__pic {
-	height: 440px;
+	height: 340px;
 	border-radius: 5px;
 	position: relative;
 }
@@ -1146,7 +1146,7 @@ ol {
 	color: #b7b7b7;
 	padding-left: 20px;
 	padding-top: 12px;
-	height: 110px;
+	height: 70px;
 	border: none;
 	border-radius: 5px;
 	resize: none;

@@ -1,5 +1,6 @@
 <?php
 session_start();
+include '../config/konek.php';
 
 
 ?>
@@ -63,13 +64,15 @@ session_start();
     <!-- style CSS
 		============================================ -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
     <!-- responsive CSS
 		============================================ -->
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <!-- modernizr JS
-		============================================ -->
+    <!-- modernizr JS ============================================ -->
+    
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
@@ -186,10 +189,44 @@ session_start();
             </div>
         </div>
         <div class="section-admin container-fluid">
-            <div class="row admin text-center">
+            <div class="row admin">
                 <div class="col-md-12">
                     <div class="row text-light">
-                        <h1>WELCOME BEK TO MANGOL PANNEL </h1>
+                      <div class="col-lg-12 col-md-12 mb-2">
+                        <div class="card" style="background-color:#1b2a47;">
+                          <div class="card-header">
+                            List manga
+                          </div>
+                          <div class="card-body">
+                            <div class="table-responsive">
+                              <table id="dtable" width="100%">
+                                <tr>
+                                  <th class="p-2">No</th>
+                                  <th>Judul</th>
+                                  <th>Status</th>
+                                  <th>Type</th>
+                                  <th>Author</th>
+                                </tr>
+                                <tbody>
+                                  <?php
+                                      $no=0;
+                                      $sql = mysqli_query($con, "SELECT * FROM tb_manga");
+                                      while ($r=mysqli_fetch_array($sql)) {
+                                      $no++;
+                                  ?>
+                                    <tr>
+                                      <td class="p-2"><?= $no; ?></td>
+                                      <td><?= $r['judul']; ?></td>
+                                      <td><?= $r['status'] ?></td>
+                                      <td><?= $r['type'] ?></td>
+                                      <td><?= $r['author'] ?></td>
+                                    </tr>
+                                </tbody>
+                                <?php } ?>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -206,6 +243,11 @@ session_start();
             </div>
         </div>
     </div>
+    <script>
+    $(document).ready(function() {
+        $('#dtable').DataTable();
+    } );
+    </script>
     <!-- jquery
 		============================================ -->
     <script src="js/vendor/jquery-1.12.4.min.js"></script>
@@ -259,6 +301,9 @@ session_start();
     <!-- main JS
 		============================================ -->
     <script src="js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
 </body>
 
 </html>

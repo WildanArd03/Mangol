@@ -1,9 +1,16 @@
 .synopsiss p{
-    font-size: 15px;
+    font-size: 18px;
     font-weight: normal;
     padding-left: 6px;
-    line-height: 20px !important;
+    line-height: 25px !important;
 }
 .content-info-manga{
     padding-left:0px !important;
+}
+.genrebtn{
+    font-size: 14px;
+    background-color:#48495b;
+    padding: .275rem .55rem;
+    border-radius: 20px;
+
 }

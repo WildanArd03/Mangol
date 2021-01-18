@@ -30,13 +30,13 @@ if (isset($_POST['buat'])) {
 
                             
 }
-
+ 
+  $datetime = date('Y-m-d H:i:s') ;
   @$link = $_POST['link'];
   @$judul = $_POST['judul'];
   @$synopsis = $_POST['sinopsis'];
   @$author = $_POST['author'];
   @$rilis = $_POST['rilis'];
-  @$genre = implode(",", $_POST['genre']);
   @$type = $_POST['type'];
   @$status = $_POST['status'];
   @$nama_file = $_FILES['gambar']['name'];
@@ -49,7 +49,7 @@ if (isset($_POST['buat'])) {
 if (isset($_POST['upload'])) {
 
 
-  $sql = mysqli_query($con, "INSERT INTO tb_manga VALUES('','$nama_file','$judul','$genre','$synopsis','$author','$status','$rilis','$type','$link')");
+  $sql = mysqli_query($con, "INSERT INTO tb_manga VALUES('','$nama_file','$judul','$synopsis','$author','$status','$rilis','$type','$link','$datetime')");
 
       if ($sql) {
           echo "<script>alert('Data Berhasil tersimpan');document.location.href='manga-add.php';</script>";
@@ -256,182 +256,114 @@ if (isset($_POST['upload'])) {
                                 <div class="card-header ">
                                     Add Manga
                                 </div>
-											<div class="card-body">
-													<div class="container-fluid p-0">
-														<div class="row">
-															<div class="col-lg-12">
-																	<div class="input-group mg-b-pro-edt">
-																		<span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-																		<input type="text" class="form-control" placeholder="Judul" name="judul" required >
-																	</div>
-															</div>
-														</div>
-														<div class="row">
-															<div class="col-lg-12">
-																	<div class="input-group mg-b-pro-edt">
-																		<textarea name="sinopsis" class="form-control-area" rows="3" placeholder="Sinopsis"></textarea>
-																	</div>
-															</div>
-														</div>
-														<div class="row">
-															<div class="col-lg-6">
-																	<div class="input-group mg-b-pro-edt">
-																		<span class="input-group-addon"><i class="icon nalika-favorites-button" aria-hidden="true"></i></span>
-																		<input type="file" class="form-control" placeholder="gambar" name="gambar"  required > 
-																	</div>
-															</div>
-															<div class="col-lg-3">
-																	<div class="input-group mg-b-pro-edt">
-																		<span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-																		<input type="text" class="form-control" placeholder="Author" name="author" required >
-																	</div>
-															</div>
-															<div class="col-lg-3">
-																	<div class="input-group mg-b-pro-edt">
-																		<span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-																		<input type="text" class="form-control" placeholder="Tahun Rilis" name="rilis" required >
-																	</div>
-															</div>
-														</div>
-														<div class="row">
-															<div class="col-lg-12">
-																	<div class="input-group mg-b-pro-edt">
-																		<span class="input-group-addon"><i class="icon nalika-favorites-button" aria-hidden="true"></i></span>
-																		<input type="text" class="form-control" placeholder="Link" name="link" required >
-																	</div>
-															</div>
-														</div>
-													</div>
-											</div>
-                            </div>
-                        	</div>
-                        	<div class="col-lg-4">
-                            <div class="row mb-3">
-                                <div class="container-fluid">
-                                    <div class="card" style="background-color:#1b2a47;">
-                                        <div class="card-header ">
-                                            Genre
+                                <div class="card-body">
+                                        <div class="container-fluid p-0">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                        <div class="input-group mg-b-pro-edt">
+                                                            <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
+                                                            <input type="text" class="form-control" placeholder="Judul" name="judul" required >
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                        <div class="input-group mg-b-pro-edt">
+                                                            <textarea name="sinopsis" class="form-control-area" rows="3" placeholder="Sinopsis"></textarea>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                        <div class="input-group mg-b-pro-edt">
+                                                            <span class="input-group-addon"><i class="icon nalika-favorites-button" aria-hidden="true"></i></span>
+                                                            <input type="file" class="form-control" placeholder="gambar" name="gambar"  required > 
+                                                        </div>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                        <div class="input-group mg-b-pro-edt">
+                                                            <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
+                                                            <input type="text" class="form-control" placeholder="Author" name="author" required >
+                                                        </div>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                        <div class="input-group mg-b-pro-edt">
+                                                            <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
+                                                            <input type="text" class="form-control" placeholder="Tahun Rilis" name="rilis" required >
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                        <div class="input-group mg-b-pro-edt">
+                                                            <span class="input-group-addon"><i class="icon nalika-favorites-button" aria-hidden="true"></i></span>
+                                                            <input type="text" class="form-control" placeholder="Link" name="link" required >
+                                                        </div>
+                                                </div>
+                                            </div>
                                         </div>
-														<div class="card-body">
-															<div class="container-fluid p-0">
-																	<div class="row">
-																		<div class="col-lg-3 col-sm-3">
-																			<input type="checkbox" name="genre[]" value="Action">
-																			<label  class="genre">Action</label>
-																		</div>
-																		<div class="col-lg-3 col-sm-3">
-																			<input type="checkbox" name="genre[]" value="Drama">
-																			<label  class="genre">Drama</label>
-																		</div>
-																		<div class="col-lg-3 col-sm-3">
-																			<input type="checkbox" name="genre[]" value="Harem">
-																			<label  class="genre">Harem</label>
-																		</div>
-																		<div class="col-lg-3 col-sm-3">
-																			<input type="checkbox" name="genre[]" value="Romance">
-																			<label  class="genre">Romance</label>
-																		</div>
-																	</div>
-																	<div class="row">
-																		<div class="col-lg-3 col-sm-3">
-																			<input type="checkbox" name="genre[]" value="Comedy">
-																			<label  class="genre">Comedy</label>
-																		</div>
-																		<div class="col-lg-3 col-sm-3">
-																			<input type="checkbox" name="genre[]" value="Fantasy">
-																			<label  class="genre">Fantasy</label>
-																		</div>
-																		<div class="col-lg-3 col-sm-3">
-																			<input type="checkbox" name="genre[]" value="Isekai">
-																			<label  class="genre">Isekai</label>
-																		</div>
-																		<div class="col-lg-3 col-sm-3">
-																			<input type="checkbox" name="genre[]" value="Adventure">
-																			<label  class="genre">Adventure</label>
-																		</div>
-																	</div>
-																	<div class="row">
-																		<div class="col-lg-3 col-sm-3">
-																			<input type="checkbox" name="genre[]" value="Magic">
-																			<label  class="genre">Magic</label>
-																		</div>
-																		<div class="col-lg-3 col-sm-3">
-																			<input type="checkbox" name="genre[]" value="Shoujo">
-																			<label  class="genre">Shoujo</label>
-																		</div>
-																		<div class="col-lg-3 col-sm-3">
-																			<input type="checkbox" name="genre[]" value="Music">
-																			<label  class="genre">Music</label>
-																		</div>
-																		<div class="col-lg-3 col-sm-3">
-																			<input type="checkbox" name="genre[]" value="Sports">
-																			<label  class="genre">Sports</label>
-																		</div>
-																	</div>
-															</div>
-														</div>
-                                    </div>
                                 </div>
+                            </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="container-fluid">
                                     <div class="card" style="background-color:#1b2a47;">
                                         <div class="card-header ">
                                             Type Komik
-                                       </div>
-													<div class="card-body">
-														<div class="container-fluid p-0">
-																<div class="row">
-																	<div class="col-4">
-																		<input type="radio" name="type" value="Manga">
-																		<label  class="genre">Manga</label>
-																	</div>
-																	<div class="col-4">
-																		<input type="radio" name="type" value="Manhua">
-																		<label  class="genre">Manhua</label>
-																	</div>
-																	<div class="col-4">
-																		<input type="radio" name="type" value="Manhwa">
-																		<label  class="genre">Manhwa</label>
-																	</div>
-																</div>
-														</div>
-													</div>
+                                        </div>
+                                        <div class="card-body">
+                                          <div class="container-fluid p-0">
+                                              <div class="row">
+                                                <div class="col-4">
+                                                  <input type="radio" name="type" value="Manga">
+                                                  <label  class="genre">Manga</label>
+                                                </div>
+                                                <div class="col-4">
+                                                  <input type="radio" name="type" value="Manhua">
+                                                  <label  class="genre">Manhua</label>
+                                                </div>
+                                                <div class="col-4">
+                                                  <input type="radio" name="type" value="Manhwa">
+                                                  <label  class="genre">Manhwa</label>
+                                                </div>
+                                              </div>
+                                          </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row mb-5 pb-4">
                                 <div class="container-fluid">
                                     <div class="card" style="background-color:#1b2a47;">
-													<div class="card-header ">
-														<div class="row">
-														<div class="col-7">Status Komik</div>
-														<div class="col-4">Publish</div>
-														</div>
-													</div>
-													<div class="card-body">
-														<div class="container-fluid p-0">
-																<div class="row">
-																	<div class="col-4">
-																		<input type="radio" name="status" value="On Going">
-																		<label  class="genre">On Going</label>
-																	</div>
-																	<div class="col-3">
-																		<input type="radio" name="status" value="Tamat">
-																		<label  class="genre">Tamat</label>
-																	</div>
-																	<div class="col-5">
-																		<input type="submit" class="btn btn-dark bgrk wdbgrk" value="Add Manga" name="upload">
-																	</div>
-																</div>
-														</div>
-													</div>
-                                   	 </div>
-                                	</div>
-                            	</div>
-									</div>
-								</form>
-                        <?php } else { ?>
+                                        <div class="card-header ">
+                                            <div class="row">
+                                                <div class="col-7">Status Komik</div>
+                                                    <div class="col-4">Publish</div>
+                                                </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="container-fluid p-0">
+                                                        <div class="row">
+                                                            <div class="col-4">
+                                                                <input type="radio" name="status" value="On Going">
+                                                                <label  class="genre">On Going</label>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <input type="radio" name="status" value="Tamat">
+                                                                <label  class="genre">Tamat</label>
+                                                            </div>
+                                                            <div class="col-5">
+                                                                <input type="submit" class="btn btn-dark bgrk wdbgrk" value="Add Manga" name="upload">
+                                                            </div>
+                                                        </div>
+                                                     </div>
+                                                </div>
+                                   	        </div>
+                                	    </div>
+                            	    </div>
+                              </div>
+                            </form>
+                            <?php } else { ?>
                             <div class="col-lg-8 mb-3">
                                 <div class="card" style="background-color:#1b2a47;">
                                     <div class="card-header ">
@@ -458,7 +390,6 @@ if (isset($_POST['upload'])) {
                                                     <div class="col-lg-3">
                                                         <div class="input-group mg-b-pro-edt">
                                                             <input type="submit"class="btn btn-dark bgrk" style="width:100%;" name="buat"value="Create" >
-                                                            <!-- <a href="?buat" >Create</a> -->
                                                         </div>
                                                     </div>
                                                 </div>

@@ -1,10 +1,25 @@
 <?php
 include '../../config/konek.php';
+include '../../admin/controller/timeago.php';
 
 $sql = mysqli_query($con, "SELECT * FROM tb_manga where id_manga = '$_GET[id]'");
 $s=mysqli_fetch_array($sql);
-// $sql = mysqli_query($con, "SELECT * FROM tb_popular_komik where id = '$_GET[id]' ");
-$r=mysqli_fetch_array($sql);
+
+if (isset($_POST['kirim'])) {
+
+    $date = date('Y-m-d H:i:s') ;
+    $comment = $_POST['comment'];
+    $id_manga = $_GET['id'];
+    $sql = mysqli_query($con, "INSERT INTO tb_comment VALUES('','$comment','$id_manga','$date')");
+    if ($sql) {
+        echo "<script>document.location.href='index.php?id=$id_manga';</script>";
+        error_reporting($sql);
+    }else{
+        //echo "<script>alert('Data Gagal tersimpan');document.location.href='index.php';</script>";
+        echo error_reporting($sql);
+    }
+}
+
 
 ?>
 
@@ -96,14 +111,6 @@ $r=mysqli_fetch_array($sql);
                             <div class="anime__details__title">
                                 <h3><?= @$r['judul'] ?> <?= @$s['judul'] ?></h3>
                             </div>
-                            <div class="anime__details__rating">
-                                <div class="rating">
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                    <a href="#"><i class="fa fa-star"></i></a>
-                                </div>
-                            </div>
                             <div class="synopsiss">
                                 <p><?= @$s['sinopsis'] ?></p>
                             </div>
@@ -125,7 +132,15 @@ $r=mysqli_fetch_array($sql);
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12">
                                         <ul class="content-info-manga">
-                                            <li><span>Genre:</span><?= @$s['genre'] ?></li>
+                                            <li><span>Genre:</span>
+                                            <?php
+                                                $no=1;
+                                                $sql = mysqli_query($con, "SELECT * FROM tb_genre where id_manga = '$_GET[id]' ");
+                                                while ($r=mysqli_fetch_array($sql)){       
+                                                ?>
+                                                <a href="" class="btn genrebtn"><?= $r['genre']?></a>
+                                                <?php }?>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -135,7 +150,8 @@ $r=mysqli_fetch_array($sql);
                     </div>
                 </div>
                 <div class="row mt-5">
-                    <div class="col-lg-12 col-md-12">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-9 col-md-12">
                         <div class="series-chapter">
                             <h2 class="pb-3"><span>Chapter List</span></h2>
                             <ul class="series-chapterlist">
@@ -153,12 +169,39 @@ $r=mysqli_fetch_array($sql);
                         </div>
                         <div class="anime__details__form pt-5">
                             <div class="section-title">
+                                <h5>Comment</h5>
+                            </div>
+                            <form method="post">
+                                <div class="row">
+                                    <div class="col">
+                                        <textarea class="text-dark"  placeholder="Your Comment" name="comment"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col text-right">
+                                        <button type="submit" name="kirim"><i class="fa fa-location-arrow"></i> Kirim</button>
+                                    </div>
+                                </div>       
+                            </form>
+                        </div>
+                        <div class="anime__details__review mt-5">
+                            <div class="section-title">
                                 <h5>Your Comment</h5>
                             </div>
-                            <form action="#">
-                                <textarea placeholder="Your Comment"></textarea>
-                                <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
-                            </form>
+                            <?php
+                                $sql = mysqli_query($con, "SELECT * FROM tb_comment WHERE id_manga = '$_GET[id]'");
+                                while ($r=mysqli_fetch_array($sql)) {
+                            ?>
+                            <div class="anime__review__item">
+                                <div class="anime__review__item__pic">
+                                    <img src="../../assets/images/review-6.jpg" alt="">
+                                </div>     
+                                <div class="anime__review__item__text">
+                                    <h6>Anonymous - <span><?= time_elapsed_string($r['update-comment'])?></span></h6>
+                                    <p><?= $r['comment']?></p>
+                                </div>
+                            </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

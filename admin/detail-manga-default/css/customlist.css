@@ -3,7 +3,7 @@ body{
 }
 .series-chapter h2 span {
     font-weight: 600;
-    font-size: 30px;
+    font-size: 25px;
     color: #ffc107;
 }
 .series-chapterlist {
@@ -20,8 +20,8 @@ body{
 }
 .flexch-book, .flexch-dllink {
     position: relative;
-    padding: 10px;
-    font-size: 25px;
+    padding: 8px;
+    font-size: 19px;
     text-align: center;
 }
 .flexch-book{
