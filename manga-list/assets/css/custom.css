@@ -1,6 +1,3 @@
-body{
-    background-color: #0b0c2a !important;
-}
 .thumb{
     width: 125px !important;
     height:165px !important;
@@ -44,97 +41,7 @@ body{
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
 }
-/* Flexbox2 */
-.flexbox2 {
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-    color: #9ca9b9;
-}
-.flexbox2-item {
-    -webkit-box-flex: 0;
-    flex: 0 0 33.33333%;
-    max-width: 33.33333%;
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-}
-.flexbox2-side .synops {
-    max-height: 85px;
-    font-size: 12px;
-    padding: 10px;
-    text-align: left;
-    display: -webkit-box;
-    -webkit-line-clamp: 6;
-    margin-bottom: 10px;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    
-}
-.flexbox2-content {
-    background: #1d1e23 !important;
-    border: solid 3px #21222d !important;
-    margin: 0 10px;
-    margin-bottom: 10px;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: 50% auto;
-}
-.flexbox2-thumb {
-    overflow: hidden;
-    position: relative;
-}
-
-.flexbox2-side {
-    position: relative;
-    overflow: hidden;
-}
-.flexbox2-side .type {
-    background: #101013 !important;
-    font-weight: 900;
-    padding: 10px;
-}
-.flexbox2-side .info {
-    padding: 8px 5px;
-    overflow: hidden;
-    background: #21222d !important;
-    font-size: 12px;
-}
-.flexbox2-side .genres {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background:  #21222d !important;
-    font-size: 13px;
-}
-
-.flexbox3-side .title {
-    position: absolute;
-    bottom: -25px;
-    text-align: left;
-    background: rgba(0,0,0,.48) !important;
-    color: #eee !important;
-    width: 100%;
-    font-size: 14px;
-    transition: .2s;
-}
-
-.flexbox2-thumb img {
-    width: 100%;
-    height: auto;
-} 
-
-.flexbox2-side .synops::-webkit-scrollbar {
-    width: 5px;
-    background-color: #343543 !important;
-}
-.flexbox2-side .synops::-webkit-scrollbar-thumb {
-    background-color: #605fe0;
-    border-radius: 2px;
-}
-
-
-/* Flexbox2 */
+/* Flexbox */
 .flexbox3 {
     display: flex;
     flex-wrap: wrap;
@@ -172,6 +79,24 @@ body{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+.flexbox3-side ul.chapter {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 5px;
+    font-size: 15px;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+.flexbox3-side ul.chapter li .date {
+    float: right;
+    text-align: left;
+    color: #999;
+    font-size: 14px;
+    padding: 3px;
 }
 .flexbox3-thumb img {
     width: 100%;

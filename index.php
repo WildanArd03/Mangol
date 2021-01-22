@@ -3,6 +3,9 @@
   include 'config/konek.php';
   include 'admin/controller/timeago.php';
 
+  if(isset($_GET['search'])){
+    $search = $_GET['search'];			
+  }
  
 
 ?>
@@ -31,6 +34,7 @@
     <link rel="stylesheet" href="assets/css/lightbox.css">
     <link rel="stylesheet" href="assets/css/custom.css">
     <link rel="stylesheet" href="assets/css/flexbox.css">
+    <link rel="stylesheet" href="assets/css/manga.css">
     
 <!--
     
@@ -56,11 +60,11 @@ https://templatemo.com/tm-557-grad-school
           <li><a href="index.php">Home</a></li>
           <li><a href="manga-list/">Manga List</a></li>
           <li>
-          <form class="d-flex justify-content-center">
-            <input class="animatebar" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-warning bordl" type="submit">
-            <i class="fas fa-search"></i>
-            </button>
+          <form class="d-flex justify-content-center" method="get">
+              <input class="animatebar" type="search" placeholder="Search" name="search" aria-label="Search">
+              <button class="btn btn-warning bordl" type="submit">
+              <i class="fas fa-search"></i>
+              </button>
           </form>
           </li>
         </ul>
@@ -68,14 +72,71 @@ https://templatemo.com/tm-557-grad-school
     </div>
   </header>
 
+  <?php
+    if(isset($_GET['search'])){ ?>
+    <section class="section mt-5 pt-2 pb-2">
+      <div class="container">
+        <div class="section-title mt-5 mb-4">
+          <h5>SEARCH "<?= $search ?>" </h5>
+        </div>
+        <!-- Flex -->
+        <div class="flexbox2">
+        <?php
+            $sql = mysqli_query($con,"select * from tb_manga where judul like '%".$search."%'");
+            $no=1;
+            while ($r=mysqli_fetch_array($sql)){
+            if ($no == 9 ) {
+              break;
+            }        
+
+          ?>
+          <div class="flexbox2-item">
+            <div class="flexbox2-content">
+              <a href="komik/<?= $r['link'] ?>/index.php?id=<?= $r['id_manga']?>">
+                <div class="flexbox2-thumb">
+                  <img src="admin/image/<?= $r['image'] ?>" alt="">
+                  <div class="flexbox2-title">
+                    <span><?= $r['judul']; $no++?></span>
+                    <span class="studio"></span>
+                  </div>
+                </div>
+              </a>
+              <div class="flexbox2-side">
+                <div class="type"><?= $r['type']; $mg = $r['id_manga'] ?></div>
+                <div class="info">SCORE : </div>
+                <div class="synops">
+                  <p><?= $r['sinopsis'] ?></p>
+                </div>
+                <div class="genres">
+                  <span>
+                  <?php
+                      $query = mysqli_query($con, "SELECT * FROM tb_genre where id_manga = '$mg' ");   
+                      while ($row=mysqli_fetch_array($query)) {  
+                  ?>
+                    <?= $row['genre'] ?>, 
+                  <?php }?>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <?php } ?>
+        </div>
+    <!-- End Flex -->
+    </div>
+  </section>
+   <?php }else{ ?> 
   <section class="section courses pb-4 p-3">
     <div class="container">
       <div class="row">
-        <h2 class="mt-5 pt-5 text-light">KOMIK POPULER</h2>
+        
+        <div class="section-title mt-5 pt-5">
+            <h5>Komik Populer</h5>
+        </div>
         <div class="owl-carousel owl-theme mt-4">
         <?php
-            $no=0;
             $sql = mysqli_query($con, "SELECT * FROM tb_popular_komik order by id_manga DESC");
+            $no=0;
             while ($r=mysqli_fetch_array($sql)) {
             if ($no == 5) {
               break;
@@ -96,13 +157,14 @@ https://templatemo.com/tm-557-grad-school
   </section>
   <section class="section mb-5 pb-2">
     <div class="container">
-     <h3 class="text-light">CHAPTER TERBARU</h3>
-     <hr color="#ffc107" class="m-0 mb-2">
+      <div class="section-title mt-3 mb-4">
+        <h5>Chapter Terbaru</h5>
+      </div>
       <!-- Flex -->
       <div class="flexbox3">
       <?php
-          $no=1;
           $sql = mysqli_query($con, "SELECT * FROM tb_manga order by id_manga DESC");
+          $no=1;
           while ($r=mysqli_fetch_array($sql)){
           if ($no == 9 ) {
             break;
@@ -111,7 +173,7 @@ https://templatemo.com/tm-557-grad-school
         ?>
         <div class="flexbox3-item">
           <div class="flexbox3-content">
-            <a href="index.php">
+            <a href="komik/<?= $r['link'] ?>/index.php?id=<?= $r['id_manga']?>">
               <div class="flexbox3-thumb">
                 <img src="admin/image/<?= $r['image'] ?>" class="img-fluid" alt="">
               </div>
@@ -138,8 +200,11 @@ https://templatemo.com/tm-557-grad-school
   <!-- End Flex -->
     </div>
   </section>
-
-  <footer class="m-0 fixed-bottom" style="background-color:#070720;">
+  <?php } ?>
+  
+  <?php
+    if(isset($_GET['search'])){ ?>
+    <footer class="m-0 fixed-bottom" style="background-color:#070720;">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -148,6 +213,20 @@ https://templatemo.com/tm-557-grad-school
       </div>
     </div>
   </footer>
+  <?php }else{ ?>
+    <footer class="m-0" style="background-color:#070720;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p><i class="fa fa-copyright"></i> Copyright 2020 by Mangol  
+        </div>
+      </div>
+    </div>
+  </footer>
+  <?php }?>
+
+  
+  
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>

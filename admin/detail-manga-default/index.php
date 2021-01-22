@@ -32,7 +32,7 @@ if (isset($_POST['kirim'])) {
     <meta name="keywords" content="Anime, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Anime | Template</title>
+    <title><?= $s['judul']?></title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -95,9 +95,14 @@ if (isset($_POST['kirim'])) {
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
-                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                        <a href="./categories.html">Categories</a>
-                        <span>Romance</span>
+                        <a href="../../"><i class="fa fa-home"></i> Home</a>
+                        <?php
+                        $no=1;
+                        $sql = mysqli_query($con, "SELECT * FROM tb_manga where id_manga = '$_GET[id]' ");
+                        while ($r=mysqli_fetch_array($sql)){       
+                        ?>
+                        <span><?= $r['judul'] ?></span>
+                        <?php }?>
                     </div>
                 </div>
             </div>
